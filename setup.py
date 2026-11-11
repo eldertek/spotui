@@ -1,8 +1,8 @@
+import os
 from setuptools import setup, find_packages
-from distutils.util import convert_path
 
 main_ns = {}
-ver_path = convert_path('spotui/version.py')
+ver_path = os.path.join('spotui', 'version.py')
 with open(ver_path) as ver_file:
     exec(ver_file.read(), main_ns)
 
@@ -22,13 +22,18 @@ setup(
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires=">=3.4",
-    install_requires=["spotipy==2.22.1"],
+    python_requires=">=3.8",
+    install_requires=[
+        "spotipy==2.22.1",
+        "windows-curses; platform_system == 'Windows'",
+    ],
     entry_points={"console_scripts": ["spotui=spotui.__main__:main"]},
 )

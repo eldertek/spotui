@@ -307,10 +307,15 @@ class MainForm:
         self.render()
 
     def handle_resize(self):
+        try:
+            curses.update_lines_cols()
+        except AttributeError:
+            pass
         for component in self.components:
             # render each component
             component.restart()
         self.stdscr.clear()
+        self.render()
 
     def handle_esc(self):
         if self.popup:
